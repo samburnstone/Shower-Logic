@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   background-color: ${props => props.theme.blue};
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
