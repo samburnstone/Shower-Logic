@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from 'utils/media';
 
 const StyledDiv = styled.div`
   background: ${props => props.theme.brown};
@@ -7,6 +8,10 @@ const StyledDiv = styled.div`
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  ${media.small} {
+    flex-direction: column;
+    text-align: center;
+  }
 `
 
 const LargeText = styled.span`
@@ -14,13 +19,17 @@ const LargeText = styled.span`
 `
 
 const StyledButton = styled.button`
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
   border: none;
   background: ${props => props.theme.white}
   font-size: 1rem;
   align-self: center;
   cursor: pointer;
+  align-self: center;
+  ${media.small} {
+    flex-direction: column;
+  }
 `
 
 export default () => (
