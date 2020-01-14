@@ -13,6 +13,6 @@ const StyledList = styled.ul`
 
 export default ({ items }: Props) => (
   <StyledList>
-    {items.map((item) => <ListItem {...item} />)}
+    {items.map((item) => <ListItem key={item.name} {...item} />)}
   </StyledList>
 )
