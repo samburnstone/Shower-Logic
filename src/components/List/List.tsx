@@ -8,7 +8,6 @@ type Props = {
 }
 
 const StyledList = styled.ul`
-  margin: 20px;
   padding: 0;
 `
 
