@@ -1,13 +1,17 @@
 import { createSelector } from 'reselect';
 import { RootState } from 'store/types';
-import { Status } from 'types';
+import { Shower, Status } from 'types';
 
 const getShowers = (state: RootState) => state.showers;
+
+type ShowerStatus = {
+  [key in Status]: Shower[]
+}
 
 export const getShowersByStatus = createSelector(
   [getShowers],
   (showers) => {
-    const initial: { [key in Status]: [] } = {
+    const initial: ShowerStatus = {
       [Status.available]: [],
       [Status.inUse]: [],
       [Status.outOfUse]: []
