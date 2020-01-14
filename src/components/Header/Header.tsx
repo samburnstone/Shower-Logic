@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
+  position: sticky;
+  top: 0;
   background-color: ${props => props.theme.blue};
   display: flex;
   flex-direction: column;
