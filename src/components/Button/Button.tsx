@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import media from 'utils/media';
+import styled from "styled-components";
+import media from "utils/media";
 
 export default styled.button`
   padding: 10px 20px;
@@ -13,4 +13,4 @@ export default styled.button`
   ${media.small} {
     flex-direction: column;
   }
-`
+`;

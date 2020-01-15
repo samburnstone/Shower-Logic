@@ -1,4 +1,4 @@
-import { RootState } from 'store/types';
+import { RootState } from "store/types";
 
 const getQueueState = (state: RootState) => state.queue;
 

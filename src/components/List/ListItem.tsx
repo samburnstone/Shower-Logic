@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Shower, Status } from 'types';
+import React from "react";
+import styled from "styled-components";
+import { Shower, Status } from "types";
 
 type Props = Shower;
 
 type StatusStyleProps = {
   status: Status;
-}
+};
 
 const StyledListItem = styled.li`
   list-style-type: none;
@@ -15,18 +15,18 @@ const StyledListItem = styled.li`
   background: ${props => props.theme.white};
   display: flex;
   align-items: center;
-`
+`;
 
 const colorForStatus = (status: Status): string => {
   switch (status) {
     case Status.available:
-      return 'green';
+      return "green";
     case Status.inUse:
-      return 'orange';
+      return "orange";
     case Status.outOfUse:
-      return 'red';
+      return "red";
   }
-}
+};
 
 const StatusIndicator = styled.div`
   height: 10px;
@@ -34,11 +34,11 @@ const StatusIndicator = styled.div`
   background: ${(props: StatusStyleProps) => colorForStatus(props.status)};
   border-radius: 50%;
   margin-right: 10px;
-`
+`;
 
 export default ({ name, status }: Props) => (
   <StyledListItem>
-  <StatusIndicator status={status} />
-  <span>{name}</span>
+    <StatusIndicator status={status} />
+    <span>{name}</span>
   </StyledListItem>
 );

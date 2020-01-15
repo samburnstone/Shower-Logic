@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { selectors as showerSelectors } from 'store/modules/showers';
-import media from 'utils/media';
-import NoShowersAvailable from './NoShowersAvailable';
-import ShowerAvailable from './ShowerAvailable';
+import React from "react";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import { selectors as showerSelectors } from "store/modules/showers";
+import media from "utils/media";
+import NoShowersAvailable from "./NoShowersAvailable";
+import ShowerAvailable from "./ShowerAvailable";
 
 const StyledDiv = styled.div`
   background: ${props => props.theme.brown};
@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
     flex-direction: column;
     text-align: center;
   }
-`
+`;
 
 export default () => {
   const isShowerAvailable = useSelector(showerSelectors.getIsShowerAvailable);
@@ -25,4 +25,4 @@ export default () => {
       {isShowerAvailable ? <ShowerAvailable /> : <NoShowersAvailable />}
     </StyledDiv>
   );
-}
+};
