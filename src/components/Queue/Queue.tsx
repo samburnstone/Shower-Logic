@@ -1,5 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { selectors as queueSelectors } from 'store/modules/queue'
 import media from 'utils/media';
 
 const StyledDiv = styled.div`
@@ -34,7 +36,14 @@ const StyledButton = styled.button`
 
 export default () => (
   <StyledDiv>
-    <h2>There are currently <LargeText>3</LargeText> people in the queue</h2>
+    <h2>
+      There are currently
+      {' '}
+      <LargeText>
+        {useSelector(queueSelectors.getQueueCount)}
+      </LargeText>
+      {' '}
+      people in the queue</h2>
     <StyledButton>Get in line</StyledButton>
   </StyledDiv>
 );
