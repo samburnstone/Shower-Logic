@@ -1,6 +1,6 @@
 import React from "react";
-import Queue from "../components/Queue";
-import harness from "./harness";
+import Queue from ".";
+import StorybookWrapper from "utils/StorybookWrapper";
 import { RootState } from "store/types";
 import { Status } from "types";
 
@@ -14,7 +14,11 @@ export const Available = () => {
     queue: 0,
     showers: [{ name: "Shower 1", status: Status.available }]
   };
-  return harness(<Queue />, state);
+  return (
+    <StorybookWrapper state={state}>
+      <Queue />
+    </StorybookWrapper>
+  );
 };
 
 export const NotAvailable = () => {
@@ -22,5 +26,9 @@ export const NotAvailable = () => {
     queue: 0,
     showers: []
   };
-  return harness(<Queue />, state);
+  return (
+    <StorybookWrapper state={state}>
+      <Queue />
+    </StorybookWrapper>
+  );
 };
