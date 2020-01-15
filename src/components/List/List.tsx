@@ -43,7 +43,7 @@ export default () => {
 
   return (
     <>
-      {Object.values(Status).map(status => (
+      {[Status.available, Status.inUse, Status.outOfUse].map(status => (
         <SubList
           key={status}
           showers={showersByStatus[status]}
