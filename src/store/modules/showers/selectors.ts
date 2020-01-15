@@ -23,3 +23,8 @@ export const getShowersByStatus = createSelector(
     }), initial);
   }
 );
+
+export const getIsShowerAvailable = createSelector(
+  [getShowersByStatus],
+  ({ available }) => available.length !== 0 
+);

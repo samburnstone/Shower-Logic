@@ -8,7 +8,8 @@ describe('Showers selectors', () => {
       const showers: Shower[] = [];
 
       const state: RootState = {
-        showers
+        showers,
+        queue: 0
       };
 
       const expected = {
@@ -26,7 +27,8 @@ describe('Showers selectors', () => {
       ];
 
       const state: RootState = {
-        showers
+        showers,
+        queue: 0
       };
 
       const expected = {
@@ -48,7 +50,8 @@ describe('Showers selectors', () => {
       ];
 
       const state: RootState = {
-        showers
+        showers,
+        queue: 0
       }
 
       const expected = {
@@ -64,5 +67,29 @@ describe('Showers selectors', () => {
 
       expect(selectors.getShowersByStatus(state)).toEqual(expected);
     });
+  });
+
+  describe('getIsShowerAvailable', () => {
+    test('true when showers with available status exist', () => {
+      const showers: Shower[] = [{ status: Status.available, name: 'Available Shower' }];
+
+      const state: RootState = {
+        showers,
+        queue: 0
+      };
+
+      expect(selectors.getIsShowerAvailable(state)).toBe(true);
+    })
+
+    test('false when showers with available status do not exist', () => {
+      const showers: Shower[] = [];
+
+      const state: RootState = {
+        showers,
+        queue: 0
+      };
+
+      expect(selectors.getIsShowerAvailable(state)).toBe(false);
+    })
   });
 });

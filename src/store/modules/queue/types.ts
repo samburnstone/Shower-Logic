@@ -10,9 +10,7 @@ export type ReceivedQueueCountUpdateAction = {
   payload: number
 };
 
-export type QueueState = {
-  count: number
-};
+export type QueueState = number;
 
 export type ActionTypes = SubscribeToQueueCountUpdatesAction | ReceivedQueueCountUpdateAction;
 
