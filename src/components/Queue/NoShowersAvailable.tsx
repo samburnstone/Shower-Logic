@@ -10,11 +10,11 @@ const LargeText = styled.span`
 
 export default () => (
   <>
-    <h3>
+    <h2>
       It's a bit busy... There are currently{" "}
       <LargeText>{useSelector(queueSelectors.getQueueCount)}</LargeText> people
       in the queue
-    </h3>
+    </h2>
     <Button>Get in line</Button>
   </>
 );
