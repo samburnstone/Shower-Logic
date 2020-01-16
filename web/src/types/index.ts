@@ -8,3 +8,7 @@ export enum Status {
   outOfUse = "outOfUse",
   inUse = "inUse"
 }
+
+export type ShowersByStatus = {
+  [key in Status]: Shower[];
+};

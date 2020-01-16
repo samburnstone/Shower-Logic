@@ -1,3 +1,3 @@
-import Queue from "./Queue";
+import QueueContainer from "./QueueContainer";
 
-export default Queue;
+export default QueueContainer;

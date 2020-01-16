@@ -1,10 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectors as showerSelectors } from "store/modules/showers";
 import media from "utils/media";
 import NoShowersAvailable from "./NoShowersAvailable";
 import ShowerAvailable from "./ShowerAvailable";
+
+export type Props = {
+  isShowerAvailable: boolean;
+  queueCount: number;
+};
 
 const StyledDiv = styled.div`
   background: ${props => props.theme.brown};
@@ -18,11 +21,12 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default () => {
-  const isShowerAvailable = useSelector(showerSelectors.getIsShowerAvailable);
-  return (
-    <StyledDiv>
-      {isShowerAvailable ? <ShowerAvailable /> : <NoShowersAvailable />}
-    </StyledDiv>
-  );
-};
+export default ({ isShowerAvailable, queueCount }: Props) => (
+  <StyledDiv>
+    {isShowerAvailable ? (
+      <ShowerAvailable />
+    ) : (
+      <NoShowersAvailable queueCount={queueCount} />
+    )}
+  </StyledDiv>
+);

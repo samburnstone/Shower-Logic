@@ -1,8 +1,8 @@
 import React from "react";
-import List from ".";
+import List from "./List";
 import StorybookWrapper from "utils/StorybookWrapper";
 import { RootState } from "store/types";
-import { Status } from "types";
+import { Status, ShowersByStatus } from "types";
 
 export default {
   title: "List",
@@ -10,41 +10,41 @@ export default {
 };
 
 export const OneOfEach = () => {
-  const state: RootState = {
-    queue: 0,
-    showers: [
-      { name: "Shower 1", status: Status.available },
-      { name: "Shower 2", status: Status.inUse },
-      { name: "Shower 3", status: Status.outOfUse }
-    ]
+  const showersByStatus: ShowersByStatus = {
+    [Status.available]: [{ name: "Shower 1", status: Status.available }],
+    [Status.inUse]: [{ name: "Shower 2", status: Status.inUse }],
+    [Status.outOfUse]: [{ name: "Shower 3", status: Status.outOfUse }]
   };
   return (
-    <StorybookWrapper state={state}>
-      <List />
+    <StorybookWrapper>
+      <List showersByStatus={showersByStatus} />
     </StorybookWrapper>
   );
 };
 
 export const OnlyAvailable = () => {
-  const state: RootState = {
-    queue: 0,
-    showers: [{ name: "Shower 1", status: Status.available }]
+  const showersByStatus: ShowersByStatus = {
+    [Status.available]: [{ name: "Shower 1", status: Status.available }],
+    [Status.inUse]: [],
+    [Status.outOfUse]: []
   };
+
   return (
-    <StorybookWrapper state={state}>
-      <List />
+    <StorybookWrapper>
+      <List showersByStatus={showersByStatus} />
     </StorybookWrapper>
   );
 };
 
 export const None = () => {
-  const state: RootState = {
-    queue: 0,
-    showers: []
+  const showersByStatus: ShowersByStatus = {
+    [Status.available]: [],
+    [Status.inUse]: [],
+    [Status.outOfUse]: []
   };
   return (
-    <StorybookWrapper state={state}>
-      <List />
+    <StorybookWrapper>
+      <List showersByStatus={showersByStatus} />
     </StorybookWrapper>
   );
 };

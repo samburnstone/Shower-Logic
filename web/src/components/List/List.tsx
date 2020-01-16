@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectors } from "store/modules/showers";
-import { Status, Shower } from "types";
+import { ShowersByStatus, Status, Shower } from "types";
 import ListItem from "./ListItem";
 
-type StatusToTitle = {
-  [key in Status]: string;
+export type Props = {
+  showersByStatus: ShowersByStatus;
 };
 
 type SubListProps = {
@@ -38,18 +36,10 @@ const SubList = ({ showers, status }: SubListProps) =>
     </>
   );
 
-export default () => {
-  const showersByStatus = useSelector(selectors.getShowersByStatus);
-
-  return (
-    <>
-      {[Status.available, Status.inUse, Status.outOfUse].map(status => (
-        <SubList
-          key={status}
-          showers={showersByStatus[status]}
-          status={status}
-        />
-      ))}
-    </>
-  );
-};
+export default ({ showersByStatus }: Props) => (
+  <>
+    {[Status.available, Status.inUse, Status.outOfUse].map(status => (
+      <SubList key={status} showers={showersByStatus[status]} status={status} />
+    ))}
+  </>
+);
