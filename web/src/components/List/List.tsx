@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ShowersByStatus, Status, Shower } from "types";
 import ListItem from "./ListItem";
 
 export type Props = {
+  fetchShowers: () => void;
   showersByStatus: ShowersByStatus;
 };
 
@@ -36,10 +37,19 @@ const SubList = ({ showers, status }: SubListProps) =>
     </>
   );
 
-export default ({ showersByStatus }: Props) => (
-  <>
-    {[Status.available, Status.inUse, Status.outOfUse].map(status => (
-      <SubList key={status} showers={showersByStatus[status]} status={status} />
-    ))}
-  </>
-);
+export default ({ fetchShowers, showersByStatus }: Props) => {
+  useEffect(() => {
+    fetchShowers();
+  }, [fetchShowers]);
+  return (
+    <>
+      {[Status.available, Status.inUse, Status.outOfUse].map(status => (
+        <SubList
+          key={status}
+          showers={showersByStatus[status]}
+          status={status}
+        />
+      ))}
+    </>
+  );
+};

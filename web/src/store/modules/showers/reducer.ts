@@ -1,23 +1,12 @@
-import { Shower, Status } from "types";
+import { Shower } from "types";
 import * as types from "./types";
 
-const initialState: Shower[] = [
-  {
-    name: "Floor 1",
-    status: Status.available
-  },
-  {
-    name: "Floor 4",
-    status: Status.available
-  },
-  {
-    name: "Floor 6",
-    status: Status.inUse
-  }
-];
+const initialState: Shower[] = [];
 
 export default (state = initialState, action: types.ActionTypes) => {
   switch (action.type) {
+    case types.RECEIVED_SHOWER_AVAILABILITY:
+      return action.payload;
     default:
       return state;
   }

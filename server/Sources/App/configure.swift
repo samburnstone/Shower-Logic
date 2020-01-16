@@ -13,6 +13,15 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     // Register middleware
     var middlewares = MiddlewareConfig() // Create _empty_ middleware config
+    // Allow cross-origin requests (different ports)
+    // Bit annoying we need to redefine all these, just because we want to change the origin
+    let corsConfig = CORSMiddleware.Configuration(
+        allowedOrigin: env.isRelease ? .originBased : .all,
+        allowedMethods: [.GET, .POST, .PUT, .OPTIONS, .DELETE, .PATCH],
+        allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith]
+    )
+    let corsMiddleware = CORSMiddleware(configuration: corsConfig)
+    middlewares.use(corsMiddleware) // Must be listed before ErrorMiddleware otherwise error response 
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     services.register(middlewares)
 

@@ -4,7 +4,7 @@ import FluentSQLite
 class ShowersDataSeed: Migration {
     typealias Database = SQLiteDatabase
 
-    static let showers: [Shower] = [
+    static let showers = [
         Shower(id: 0, name: "Floor 1", status: .available),
         Shower(id: 1, name: "Floor 4", status: .available),
         Shower(id: 2, name: "Floor 6", status: .available)

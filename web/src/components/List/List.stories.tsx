@@ -1,7 +1,6 @@
 import React from "react";
 import List from "./List";
 import StorybookWrapper from "utils/StorybookWrapper";
-import { RootState } from "store/types";
 import { Status, ShowersByStatus } from "types";
 
 export default {
@@ -17,7 +16,7 @@ export const OneOfEach = () => {
   };
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} />
+      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
     </StorybookWrapper>
   );
 };
@@ -31,7 +30,7 @@ export const OnlyAvailable = () => {
 
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} />
+      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
     </StorybookWrapper>
   );
 };
@@ -44,7 +43,7 @@ export const None = () => {
   };
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} />
+      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
     </StorybookWrapper>
   );
 };

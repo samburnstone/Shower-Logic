@@ -7,7 +7,7 @@ enum ShowerStatus: String, SQLiteEnumType {
         return (.available, .inUse)
     }
 
-    case available = "Available"
+    case available = "available"
     case inUse = "inUse"
     case outOfUse = "outOfUse"
 }
