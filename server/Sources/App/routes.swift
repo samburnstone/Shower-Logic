@@ -10,4 +10,5 @@ public func routes(_ router: Router) throws {
 
     let showerController = ShowerController()
     apiRouter.get("showers", use: showerController.index)
+    apiRouter.post("showers", Int.parameter, "status", use: showerController.updateStatus)
 }
