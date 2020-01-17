@@ -21,7 +21,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith]
     )
     let corsMiddleware = CORSMiddleware(configuration: corsConfig)
-    middlewares.use(corsMiddleware) // Must be listed before ErrorMiddleware otherwise error response 
+    middlewares.use(corsMiddleware) // Must be listed before ErrorMiddleware otherwise error response
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     services.register(middlewares)
 

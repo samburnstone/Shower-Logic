@@ -6,6 +6,8 @@ public func routes(_ router: Router) throws {
         return "It works!"
     }
 
+    let apiRouter = router.grouped("api")
+
     let showerController = ShowerController()
-    router.get("api/showers", use: showerController.index)
+    apiRouter.get("showers", use: showerController.index)
 }
