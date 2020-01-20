@@ -6,11 +6,13 @@ import ListItem from "./ListItem";
 export type Props = {
   fetchShowers: () => void;
   showersByStatus: ShowersByStatus;
+  bookShower: (showerId: number) => void;
 };
 
 type SubListProps = {
   showers: Shower[];
   status: Status;
+  bookShower: (showerId: number) => void;
 };
 
 const StyledList = styled.ul`
@@ -25,19 +27,19 @@ const titleForStatus = (status: Status): string => {
   }[status];
 };
 
-const SubList = ({ showers, status }: SubListProps) =>
+const SubList = ({ showers, status, bookShower }: SubListProps) =>
   showers.length === 0 ? null : (
     <>
       <h3>{titleForStatus(status)}</h3>
       <StyledList>
         {showers.map(item => (
-          <ListItem key={item.name} {...item} />
+          <ListItem key={item.name} {...item} bookShower={bookShower} />
         ))}
       </StyledList>
     </>
   );
 
-export default ({ fetchShowers, showersByStatus }: Props) => {
+export default ({ fetchShowers, showersByStatus, bookShower }: Props) => {
   useEffect(() => {
     fetchShowers();
   }, [fetchShowers]);
@@ -48,6 +50,7 @@ export default ({ fetchShowers, showersByStatus }: Props) => {
           key={status}
           showers={showersByStatus[status]}
           status={status}
+          bookShower={bookShower}
         />
       ))}
     </>

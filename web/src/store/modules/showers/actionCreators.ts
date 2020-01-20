@@ -11,3 +11,17 @@ export const receivedShowerAvailability: (
   type: types.RECEIVED_SHOWER_AVAILABILITY,
   payload: showers
 });
+
+export const bookShower: (
+  showerId: number
+) => types.BookShowerAction = showerId => ({
+  type: types.BOOK_SHOWER,
+  payload: showerId
+});
+
+export const receivedShowerBook: (
+  showerId: number
+) => types.ReceivedBookShowerAction = (showerId: number) => ({
+  type: types.RECEIVED_BOOK_SHOWER,
+  payload: showerId
+});

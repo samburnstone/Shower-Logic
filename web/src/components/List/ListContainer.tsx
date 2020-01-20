@@ -10,6 +10,7 @@ type StateProps = {
 
 type DispatchProps = {
   fetchShowers: () => void;
+  bookShower: (showerId: number) => void;
 };
 
 const mapStateToProps = (state: RootState): StateProps => ({
@@ -17,7 +18,8 @@ const mapStateToProps = (state: RootState): StateProps => ({
 });
 
 const mapDispatchToProps: DispatchProps = {
-  fetchShowers: actionCreators.fetchShowerAvailability
+  fetchShowers: actionCreators.fetchShowerAvailability,
+  bookShower: actionCreators.bookShower
 };
 
 // TODO: work out how to type this

@@ -1,4 +1,5 @@
 export type Shower = {
+  id: number;
   name: string;
   status: Status;
 };

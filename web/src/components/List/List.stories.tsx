@@ -10,27 +10,35 @@ export default {
 
 export const OneOfEach = () => {
   const showersByStatus: ShowersByStatus = {
-    [Status.available]: [{ name: "Shower 1", status: Status.available }],
-    [Status.inUse]: [{ name: "Shower 2", status: Status.inUse }],
-    [Status.outOfUse]: [{ name: "Shower 3", status: Status.outOfUse }]
+    [Status.available]: [{ id: 0, name: "Shower 1", status: Status.available }],
+    [Status.inUse]: [{ id: 1, name: "Shower 2", status: Status.inUse }],
+    [Status.outOfUse]: [{ id: 2, name: "Shower 3", status: Status.outOfUse }]
   };
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
+      <List
+        showersByStatus={showersByStatus}
+        fetchShowers={jest.fn()}
+        bookShower={jest.fn()}
+      />
     </StorybookWrapper>
   );
 };
 
 export const OnlyAvailable = () => {
   const showersByStatus: ShowersByStatus = {
-    [Status.available]: [{ name: "Shower 1", status: Status.available }],
+    [Status.available]: [{ id: 0, name: "Shower 1", status: Status.available }],
     [Status.inUse]: [],
     [Status.outOfUse]: []
   };
 
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
+      <List
+        showersByStatus={showersByStatus}
+        fetchShowers={jest.fn()}
+        bookShower={jest.fn()}
+      />
     </StorybookWrapper>
   );
 };
@@ -43,7 +51,11 @@ export const None = () => {
   };
   return (
     <StorybookWrapper>
-      <List showersByStatus={showersByStatus} fetchShowers={jest.fn()} />
+      <List
+        showersByStatus={showersByStatus}
+        fetchShowers={jest.fn()}
+        bookShower={jest.fn()}
+      />
     </StorybookWrapper>
   );
 };
