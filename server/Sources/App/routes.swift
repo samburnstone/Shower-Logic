@@ -10,5 +10,7 @@ public func routes(_ router: Router) throws {
 
     let showerController = ShowerController()
     apiRouter.get("showers", use: showerController.index)
-    apiRouter.post("showers", Int.parameter, "status", use: showerController.updateStatus)
+    apiRouter.post("showers", Int.parameter, "book", use: showerController.book)
+    apiRouter.post("showers", Int.parameter, "available", use: showerController.markAvailable)
+    apiRouter.post("showers", Int.parameter, "out-of-use", use: showerController.markOutOfUse)
 }
