@@ -18,8 +18,10 @@ public func routes(_ router: Router) throws {
 public func socketRoutes(_ socketServer: NIOWebSocketServer) throws {
     socketServer.get("echo") { ws, req in
         ws.onText { ws, text in
-            print("\(text)!")
             ws.send("You sent \"\(text.trimmingCharacters(in: .newlines))\"!")
         }
     }
+
+    let queueController = QueueController()
+    socketServer.get("queue/add", use: queueController.subscribeToQueueUpdates)
 }

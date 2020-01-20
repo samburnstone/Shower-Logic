@@ -26,11 +26,11 @@ final class Shower: SQLiteModel {
 }
 
 /// Allows `Shower` to be used as a dynamic migration.
-extension Shower: Migration { }
+extension Queuee: Migration { }
 
 /// Allows `Shower` to be encoded to and decoded from HTTP messages.
-extension Shower: Content { }
+extension Queuee: Content { }
 
 /// Allows `Shower` to be used as a dynamic parameter in route definitions.
-extension Shower: Parameter { }
+extension Queuee: Parameter { }
 

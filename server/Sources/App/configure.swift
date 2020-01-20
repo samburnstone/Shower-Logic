@@ -37,12 +37,11 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var migrations = MigrationConfig()
     migrations.add(model: Shower.self, database: .sqlite)
     migrations.add(migration: ShowersDataSeed.self, database: .sqlite)
+    migrations.add(model: Queuee.self, database: .sqlite)
     services.register(migrations)
 
     // Configure websocket
-    WebSocketServer
     let wss = NIOWebSocketServer.default()
     try socketRoutes(wss)
     services.register(wss, as: WebSocketServer.self)
-
 }
