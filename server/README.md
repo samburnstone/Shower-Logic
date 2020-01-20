@@ -1,3 +1,12 @@
+# Server written using Vapor
+
+## Mimicking websocket client connection
+
+- Install `websocat` using `brew install websocat`
+- Open websocket connection using `websocat ws://localhost:8080/echo` (assuming echo is a valid websocket handling route)
+
+## Misc.
+
 <p align="center">
     <img src="https://user-images.githubusercontent.com/1342803/36623515-7293b4ec-18d3-11e8-85ab-4e2f8fb38fbd.png" width="320" alt="API Template">
     <br>
