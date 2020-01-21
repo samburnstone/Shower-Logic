@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { Shower, Status } from "types";
+import Button from "components/Button";
 
 type Props = Shower & {
   bookShower: (showerId: number) => void;
@@ -16,7 +17,7 @@ const StyledListItem = styled.li`
   margin: 20px 0;
   background: ${props => props.theme.white};
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 const colorForStatus = (status: Status): string => {
@@ -34,7 +35,9 @@ const buttonComponent = (props: Props): ReactElement | null => {
   switch (props.status) {
     case Status.available:
       return (
-        <button onClick={() => props.bookShower(props.id)}>Nab it!</button>
+        <Button mode="dark" onClick={() => props.bookShower(props.id)}>
+          Nab it!
+        </Button>
       );
     default:
       return null;
@@ -49,10 +52,17 @@ const StatusIndicator = styled.div`
   margin-right: 10px;
 `;
 
+const StatusNameContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export default (props: Props) => (
   <StyledListItem>
-    <StatusIndicator status={props.status} />
-    <span>{props.name}</span>
+    <StatusNameContainer>
+      <StatusIndicator status={props.status} />
+      <span>{props.name}</span>
+    </StatusNameContainer>
     {buttonComponent(props)}
   </StyledListItem>
 );
