@@ -9,18 +9,33 @@ export default {
 
 export const Available = () => (
   <StorybookWrapper>
-    <Queue addToQueue={() => {}} isShowerAvailable queueCount={0} />
+    <Queue
+      addToQueue={() => {}}
+      isShowerAvailable
+      queueCount={0}
+      queuePosition={0}
+    />
   </StorybookWrapper>
 );
 
 export const NotAvailableQueueCount0 = () => (
   <StorybookWrapper>
-    <Queue addToQueue={() => {}} isShowerAvailable={false} queueCount={0} />
+    <Queue
+      addToQueue={() => {}}
+      isShowerAvailable={false}
+      queueCount={0}
+      queuePosition={0}
+    />
   </StorybookWrapper>
 );
 
 export const NotAvailableQueueCount2 = () => (
   <StorybookWrapper>
-    <Queue addToQueue={() => {}} isShowerAvailable={false} queueCount={2} />
+    <Queue
+      addToQueue={() => {}}
+      isShowerAvailable={false}
+      queuePosition={0}
+      queueCount={2}
+    />
   </StorybookWrapper>
 );

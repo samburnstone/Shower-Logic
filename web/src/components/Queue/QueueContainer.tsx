@@ -10,6 +10,7 @@ import Queue from "./Queue";
 export type StateProps = {
   isShowerAvailable: boolean;
   queueCount: number;
+  queuePosition: number;
 };
 
 export type DispatchProps = {
@@ -18,7 +19,8 @@ export type DispatchProps = {
 
 const mapStateToProps = (state: RootState): StateProps => ({
   isShowerAvailable: showerSelectors.getIsShowerAvailable(state),
-  queueCount: queueSelectors.getQueueCount(state)
+  queueCount: queueSelectors.getQueueCount(state),
+  queuePosition: queueSelectors.getQueuePosition(state)
 });
 
 const mapDispatchToProps: DispatchProps = {

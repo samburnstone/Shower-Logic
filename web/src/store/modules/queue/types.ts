@@ -12,7 +12,7 @@ export type ReceivedQueueCountUpdateAction = {
   payload: UpdateStatus;
 };
 
-export type QueueState = number;
+export type QueueState = UpdateStatus;
 
 export type UpdateStatus = {
   length: number;

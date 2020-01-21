@@ -18,8 +18,8 @@ export const OneOfEach = () => {
     <StorybookWrapper>
       <List
         showersByStatus={showersByStatus}
-        fetchShowers={jest.fn()}
-        bookShower={jest.fn()}
+        fetchShowers={() => {}}
+        bookShower={() => {}}
       />
     </StorybookWrapper>
   );
@@ -36,8 +36,8 @@ export const OnlyAvailable = () => {
     <StorybookWrapper>
       <List
         showersByStatus={showersByStatus}
-        fetchShowers={jest.fn()}
-        bookShower={jest.fn()}
+        fetchShowers={() => {}}
+        bookShower={() => {}}
       />
     </StorybookWrapper>
   );
@@ -53,8 +53,8 @@ export const None = () => {
     <StorybookWrapper>
       <List
         showersByStatus={showersByStatus}
-        fetchShowers={jest.fn()}
-        bookShower={jest.fn()}
+        fetchShowers={() => {}}
+        bookShower={() => {}}
       />
     </StorybookWrapper>
   );
