@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import media from "utils/media";
 import NoShowersAvailable from "./NoShowersAvailable";
-import ShowerAvailable from "./ShowerAvailable";
 import { DispatchProps, StateProps } from "./QueueContainer";
 
 type Props = DispatchProps & StateProps;
@@ -22,7 +21,7 @@ const StyledDiv = styled.div`
 export default ({ addToQueue, isShowerAvailable, queueCount }: Props) => (
   <StyledDiv>
     {isShowerAvailable ? (
-      <ShowerAvailable />
+      <h2>A shower is available</h2>
     ) : (
       <NoShowersAvailable addToQueue={addToQueue} queueCount={queueCount} />
     )}
