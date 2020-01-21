@@ -16,27 +16,42 @@ final class QueueController {
             .map { [unowned self] queue in
                 guard let queueeId = queue.id else { return }
                 self.queueeToWebsocketMap[queueeId] = socket
-                socket.send("CONNECTED:\(queueeId)")
-                self.printQueueLength()
-                self.notifyQueueCountUpdate(excludingId: queueeId)
+                self.printQueueLength(using: req)
+                self.notifyQueueCountUpdate(using: req)
 
                 _ = socket.onClose.map {
-                    print("Queuee \(queueeId) has left us!")
-                    self.queueeToWebsocketMap.removeValue(forKey: queueeId)
-                    self.printQueueLength()
-                    self.notifyQueueCountUpdate(excludingId: queueeId)
+                    queue.delete(on: req).map(to: Void.self) { _ in
+                        self.queueeToWebsocketMap.removeValue(forKey: queueeId)
+                        self.printQueueLength(using: req)
+                        self.notifyQueueCountUpdate(using: req)
+                    }
                 }
         }
     }
 
-    private func printQueueLength() {
-        print("Current number of queue members: ", queueLength)
+    private func printQueueLength(using req: Request) {
+        let allQueueMembers = Queuee.query(on: req).all()
+        _ = allQueueMembers.map(to: Void.self) { (queuees: [Queuee]) in
+            print("Current number of queue members: ", queuees.count)
+            return ()
+        }
     }
 
-    private func notifyQueueCountUpdate(excludingId idToExclude: Int) {
-        queueeToWebsocketMap.filter({ $0.key != idToExclude })
-            .forEach { _, socket in
-                socket.send("COUNT_UPDATE:\(queueLength)")
+    private func notifyQueueCountUpdate(using req: Request) {
+        let queueByTimestamp = Queuee.query(on: req)
+            .sort(\.timestamp)
+            .all()
+
+        // Notify each user of their position in the queue
+        _ = queueByTimestamp.map(to: Void.self) { [unowned self] (queueItems: [Queuee]) in
+            let encoder = JSONEncoder()
+            for (index, queuee) in queueItems.enumerated() {
+                let update = QueueUpdate(position: index + 1, length: queueItems.count)
+                guard let queueeId = queuee.id else { continue }
+                // send to websocket for that user
+                let encodedData = try encoder.encode(update);
+                self.queueeToWebsocketMap[queueeId]?.send(encodedData)
+            }
         }
     }
 }
