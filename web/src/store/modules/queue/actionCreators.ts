@@ -5,8 +5,8 @@ export const subscribeToQueueCountUpdates: () => types.SubscribeToQueueCountUpda
 });
 
 export const receivedQueueCountUpdate: (
-  count: number
-) => types.ReceivedQueueCountUpdateAction = showers => ({
+  updateStatus: types.UpdateStatus
+) => types.ReceivedQueueCountUpdateAction = updateStatus => ({
   type: types.RECEIVED_QUEUE_COUNT_UPDATE,
-  payload: showers
+  payload: updateStatus
 });

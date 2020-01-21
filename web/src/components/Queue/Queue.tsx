@@ -3,11 +3,9 @@ import styled from "styled-components";
 import media from "utils/media";
 import NoShowersAvailable from "./NoShowersAvailable";
 import ShowerAvailable from "./ShowerAvailable";
+import { DispatchProps, StateProps } from "./QueueContainer";
 
-export type Props = {
-  isShowerAvailable: boolean;
-  queueCount: number;
-};
+type Props = DispatchProps & StateProps;
 
 const StyledDiv = styled.div`
   background: ${props => props.theme.brown};
@@ -21,12 +19,12 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default ({ isShowerAvailable, queueCount }: Props) => (
+export default ({ addToQueue, isShowerAvailable, queueCount }: Props) => (
   <StyledDiv>
     {isShowerAvailable ? (
       <ShowerAvailable />
     ) : (
-      <NoShowersAvailable queueCount={queueCount} />
+      <NoShowersAvailable addToQueue={addToQueue} queueCount={queueCount} />
     )}
   </StyledDiv>
 );

@@ -9,10 +9,15 @@ export type SubscribeToQueueCountUpdatesAction = {
 
 export type ReceivedQueueCountUpdateAction = {
   type: typeof RECEIVED_QUEUE_COUNT_UPDATE;
-  payload: number;
+  payload: UpdateStatus;
 };
 
 export type QueueState = number;
+
+export type UpdateStatus = {
+  length: number;
+  position: number;
+};
 
 export type ActionTypes =
   | SubscribeToQueueCountUpdatesAction
