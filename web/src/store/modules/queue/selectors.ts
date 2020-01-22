@@ -1,8 +1,7 @@
 import { RootState } from "store/types";
+import { UpdateStatus } from "./types";
 
 const getQueueState = (state: RootState) => state.queue;
 
-export const getQueueCount = (state: RootState): number =>
-  getQueueState(state).length;
-export const getQueuePosition = (state: RootState): number =>
-  getQueueState(state).position;
+export const getQueueStatus = (state: RootState): UpdateStatus | undefined =>
+  getQueueState(state).status;

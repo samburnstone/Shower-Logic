@@ -4,13 +4,13 @@ import {
   selectors as queueSelectors
 } from "store/modules/queue";
 import { selectors as showerSelectors } from "store/modules/showers";
+import { UpdateStatus } from "store/modules/queue/types";
 import { RootState } from "store/types";
 import Queue from "./Queue";
 
 export type StateProps = {
   isShowerAvailable: boolean;
-  queueCount: number;
-  queuePosition: number;
+  queueStatus?: UpdateStatus;
 };
 
 export type DispatchProps = {
@@ -19,8 +19,7 @@ export type DispatchProps = {
 
 const mapStateToProps = (state: RootState): StateProps => ({
   isShowerAvailable: showerSelectors.getIsShowerAvailable(state),
-  queueCount: queueSelectors.getQueueCount(state),
-  queuePosition: queueSelectors.getQueuePosition(state)
+  queueStatus: queueSelectors.getQueueStatus(state)
 });
 
 const mapDispatchToProps: DispatchProps = {

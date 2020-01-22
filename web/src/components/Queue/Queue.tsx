@@ -18,12 +18,12 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default ({ addToQueue, isShowerAvailable, queueCount }: Props) => (
+export default ({ addToQueue, isShowerAvailable, queueStatus }: Props) => (
   <StyledDiv>
     {isShowerAvailable ? (
       <h2>A shower is available</h2>
     ) : (
-      <NoShowersAvailable addToQueue={addToQueue} queueCount={queueCount} />
+      <NoShowersAvailable addToQueue={addToQueue} queueStatus={queueStatus} />
     )}
   </StyledDiv>
 );
